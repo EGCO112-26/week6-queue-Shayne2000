@@ -18,7 +18,7 @@ int main(int argc , char **argv) {
  for( i=1 ; i < argc ; i++ ){
         if(strcmp(argv[i],"x")==0){
             x=dequeue(&q);
-            // printf("dequeing %d\n",x);
+            printf("dequeing %d\n",x);
         }
         else {
            enqueue(&q,atoi(argv[i]));
