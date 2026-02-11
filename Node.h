@@ -13,31 +13,54 @@ struct node
     struct node *nextPtr;
 };
 
+struct que {
+    struct node * head ;
+    struct node * tail ;
+};
+
 typedef struct node Node;
 typedef struct node* NodePtr;
 
 
-void enqueue(NodePtr * head, NodePtr* tail, int x){
-  Node* new_node=(NodePtr) malloc(sizeof(Node));
-if(new_node){ 
-    /* Finish queue*/
+void enqueue(struct que * q, int x){
+  struct node * new_node ;
+  new_node = (struct node *)malloc(sizeof(struct node)) ;
+
+  new_node -> data = x ;
+if(q -> head == NULL){ 
+    q -> head = new_node ;
+ }else {
+  q -> tail -> nextPtr = new_node ;
  }
+ q -> tail = new_node ;
+
 }
 
 
-int dequeue(NodePtr* head, NodePtr* tail){
-  NodePtr t=*head;
-   if(t){
-   int value= t->data;
-   /* Finish dequeue*/
-       
-       
-   return value;
+int dequeue(struct que * q){
+
+  struct node * dummy ;
+  int x ;
+
+   if(q -> head != NULL){
+    dummy = q -> head ;
+    x = dummy -> data ;
+    q -> head = dummy -> nextPtr ;
+    free(dummy);
+   return x;
    }
-   printf("Empty queue");
+   printf("Empty queue\n");
    return 0;
 }
 
 
+void showq (struct que * q) {
+  struct node * dummy ;
+  dummy = q -> head ;
+  while (dummy) {
+    printf("%d\n",dummy -> data) ;
+    dummy = dummy -> nextPtr ;
+  }
+}
 
 #endif
