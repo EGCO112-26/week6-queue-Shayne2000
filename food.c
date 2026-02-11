@@ -50,6 +50,12 @@ int main(int argc , char **argv) {
 
     printf("=====================================\n There are %d ppl left in the queue\n",q.size);
 
+    for (int i = 0 ; i < q.size ; i ++) {
+        struct node * dummy = q.head ;
+        q.head = dummy -> next ;
+        free(dummy);
+    }
+
 }
 
 
