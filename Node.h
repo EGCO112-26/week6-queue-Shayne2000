@@ -47,6 +47,7 @@ int dequeue(struct que * q){
     x = dummy -> data ;
     q -> head = dummy -> nextPtr ;
     free(dummy);
+    printf("dequeing %d\n",x);
    return x;
    }
    printf("Empty queue\n");
